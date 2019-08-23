@@ -16,7 +16,7 @@ from selenium.webdriver.common.keys import Keys
 
 # In[274]:
 
-import requests
+
 from lxml import etree
 import re
 from tqdm import tqdm
@@ -67,7 +67,6 @@ def parse_product():
 
 # In[169]:
 
-import pymongo
 
 mongo_url = 'mongodb://admin:9870384@localhost'
 mongo_db = 'crawler'
@@ -242,9 +241,6 @@ login_button.click()
 
 
 # 手动登录
-
-time.sleep(30)
-
 try:
     nickname = wait.until(EC.presence_of_element_located((By.XPATH,'//a[@class="j_Username j_UserNick sn-user-nick"]')))
     if nickname.get_attribute('title')=='tb5792639_2012':
@@ -263,8 +259,7 @@ except Exception as e:
 input_element = wait.until(EC.presence_of_element_located((By.ID,'mq')))
 
 input_element.clear()
-keywords = input('Input the keywords: ')
-input_element.send_keys(keywords)
+input_element.send_keys('H&M')
 input_element.send_keys(Keys.RETURN)
 
 # 判断是否需要验证
